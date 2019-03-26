@@ -4,4 +4,19 @@ services:
   image: consul:latest
   ports:
    - "8500:8500"
-   
+ geolocation-1:
+  image: omkarshetkar/geolocation:latest
+  depends_on: 
+   - consul
+  ports:
+   - "8081"
+  environment:
+    GEOLOCATION_SERVER_PORT: "8081"
+ geolocation-2:
+  image: omkarshetkar/geolocation:latest
+  depends_on: 
+   - consul
+  ports:
+   - "8082"
+  environment:
+    GEOLOCATION_SERVER_PORT: "8082"
