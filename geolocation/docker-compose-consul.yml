@@ -1,0 +1,7 @@
+version: "2"
+services:
+ consul:
+  image: consul:latest
+  port:
+   - "8500:8500"
+   
