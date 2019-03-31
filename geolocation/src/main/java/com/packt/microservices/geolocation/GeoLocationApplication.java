@@ -11,5 +11,6 @@ public class GeoLocationApplication {
 		SpringApplication.run(GeoLocationApplication.class, args);
 		// commented out so that the service does not try to connect to zk
 //		new Zookeeper("192.168.0.4", 2181).register();
+		new Thread(new GeoLocationConsumer()).start();
 	}
 }

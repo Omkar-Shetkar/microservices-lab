@@ -3,14 +3,25 @@ package com.packt.microservices.geolocation;
 import java.io.Serializable;
 import java.util.UUID;
 
+import com.google.gson.Gson;
+
 public class GeoLocation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private static final Gson GSON = new Gson();
 
 	private double latitude;
 	private double longitude;
 	private UUID userId;
 	private long timestamp;
+
+	public GeoLocation(double latitude, double longitude) {
+		super();
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.userId = UUID.randomUUID();
+		this.timestamp = System.currentTimeMillis();
+	}
 
 	public double getLatitude() {
 		return latitude;
@@ -48,4 +59,8 @@ public class GeoLocation implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return GSON.toJson(this);
+	}
 }
